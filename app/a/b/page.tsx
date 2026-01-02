@@ -1,8 +1,10 @@
-import { getPokeData } from "../../utils";
+import { getPikachuData, getPokeData } from "../../utils";
 
 export default async function PageAB() {
   const data = await getPokeData();
   const time = new Date().toLocaleTimeString();
+
+  const pikachuData = await getPikachuData();
 
   return (
     <div className="p-8 space-y-6 max-w-2xl mx-auto">
@@ -25,6 +27,13 @@ export default async function PageAB() {
           <span className="text-slate-500 font-medium">Pokemon Name:</span>
           <span className="text-xl font-semibold capitalize text-indigo-600">
             {data.name}
+          </span>
+        </div>
+
+        <div className="flex justify-between items-center">
+          <span className="text-slate-500 font-medium">Pikachu Name:</span>
+          <span className="text-xl font-semibold capitalize text-indigo-600">
+            {pikachuData.name}
           </span>
         </div>
       </div>
