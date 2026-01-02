@@ -3,7 +3,9 @@ export interface Pokemon {
   id: number;
 }
 
-export const getPokeData = async (): Promise<Pokemon> => {
+export const getPokeData = async (): Promise<{ name: string; time: string }> => {
+  const time = new Date().toLocaleTimeString();
+
   const res = await fetch('https://pokeapi.co/api/v2/pokemon/ditto', {
     next: { revalidate: 60 },
   });
@@ -12,10 +14,11 @@ export const getPokeData = async (): Promise<Pokemon> => {
     throw new Error('Failed to fetch Pokemon data');
   }
   
-  return res.json();
+  return { ...res.json(), time };
 };
 
-export const getPikachuData = async (): Promise<Pokemon> => {
+export const getPikachuData = async (): Promise<{ name: string; time: string }> => {
+  const time = new Date().toLocaleTimeString();
   const res = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu', {
     next: { revalidate: 60 },
   });
@@ -24,5 +27,5 @@ export const getPikachuData = async (): Promise<Pokemon> => {
     throw new Error('Failed to fetch Pokemon data');
   }
   
-  return res.json();
+  return { ...res.json(), time };
 };

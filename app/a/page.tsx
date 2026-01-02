@@ -1,8 +1,7 @@
 import { getPokeData } from "../utils";
 
 export default async function PageA() {
-  const data = await getPokeData();
-  const time = new Date().toLocaleTimeString();
+  const { name, time } = await getPokeData();
 
   return (
     <div className="p-8 space-y-6 max-w-2xl mx-auto">
@@ -24,7 +23,7 @@ export default async function PageA() {
         <div className="flex justify-between items-center">
           <span className="text-slate-500 font-medium">Pokemon Name:</span>
           <span className="text-xl font-semibold capitalize text-blue-600">
-            {data.name}
+            {name}
           </span>
         </div>
       </div>
