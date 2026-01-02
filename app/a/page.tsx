@@ -1,15 +1,19 @@
 import { getPokeData } from "../utils";
+import { RevalidateButton } from "../components/RevalidateButton";
 
 export default async function PageA() {
   const { name, time, fetchId, cacheStatus } = await getPokeData();
 
   return (
     <div className="p-8 space-y-6 max-w-2xl mx-auto">
-      <div className="space-y-2">
-        <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
-          Route Segment: /a
-        </span>
-        <h1 className="text-3xl font-bold text-slate-900">Route A</h1>
+      <div className="flex items-start justify-between">
+        <div className="space-y-2">
+          <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+            Route Segment: /a
+          </span>
+          <h1 className="text-3xl font-bold text-slate-900">Route A</h1>
+        </div>
+        <RevalidateButton />
       </div>
       
       <div className="grid gap-4 bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
